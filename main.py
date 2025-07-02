@@ -3,7 +3,7 @@ from environment.trading_env import TradingEnvironment
 from model.agent import DQNAgent
 from config import config
 import torch
-import argparse
+import os, argparse
 import random
 import numpy as np
 
@@ -36,12 +36,13 @@ def train_agent():
             total_reward += reward
 
         agent.replay(config['training']['batch_size'])
-        print(f'Episode {episode+1}/{config["training"]["episodes"]}, total reward: {total_reward}')
+        print(f'Episode {episode+1}/{config['training']['episodes']}, total reward: {total_reward}')
 
     print('Training complete!')
 
+    os.makedirs(os.path.dirname(config['model']['model_path']), exist_ok=True)
     torch.save(agent.model.state_dict(), config['model']['model_path'])
-    print(f'Model saved to {config["model"]["model_path"]}')
+    print(f'Model saved to {config['model']['model_path']}')
 
     return data, agent
 
