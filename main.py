@@ -36,12 +36,12 @@ def train_agent():
             total_reward += reward
 
         agent.replay(config['training']['batch_size'])
-        print(f'Episode {episode+1}/{config['training']['episodes']}, total reward: {total_reward}')
+        print(f'Episode {episode+1}/{config["training"]["episodes"]}, total reward: {total_reward}')
 
     print('Training complete!')
 
     torch.save(agent.model.state_dict(), config['model']['model_path'])
-    print(f'Model saved to {config['model']['model_path']}')
+    print(f'Model saved to {config["model"]["model_path"]}')
 
     return data, agent
 
