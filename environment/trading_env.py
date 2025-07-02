@@ -26,10 +26,10 @@ class TradingEnvironment:
             self.holdings = 0
 
         self.index += 1
-        done = self.index >= len(self.data) - 1
+        done = self.index >= len(self.data)
 
         if done:
             reward = self.balance - self.initial_balance
 
         next_state = get_state(self.data, self.index) if not done else None
-        return next_state, reward, done, {}
+        return next_state, reward

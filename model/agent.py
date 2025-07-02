@@ -7,25 +7,26 @@ from .dqn import DQN
 
 class DQNAgent:
     def __init__(self, config):
-        self.state_size = config["model"]["state_size"]
-        self.action_size = config["model"]["action_size"]
-        self.memory = deque(maxlen=2000)
-        self.gamma = config["training"]["gamma"]
-        self.epsilon = config["training"]["epsilon"]
-        self.epsilon_min = config["training"]["epsilon_min"]
-        self.epsilon_decay = config["training"]["epsilon_decay"]
-        self.learning_rate = config["training"]["learning_rate"]
+        self.state_size = config['model']['state_size']
+        self.action_size = len(config['actions'])
+        self.memory = deque(maxlen=config['training']['max_memory_size'])
+        self.gamma = config['training']['gamma']
+        self.epsilon = config['training']['epsilon']
+        self.epsilon_min = config['training']['epsilon_min']
+        self.epsilon_decay = config['training']['epsilon_decay']
+        self.learning_rate = config['training']['learning_rate']
         
-        self.model = DQN(config["model"])
+        self.model = DQN(config['model'], len(config['actions']))
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.criterion = nn.MSELoss()
 
-    def remember(self, state, action, reward, next_state, done):
-        self.memory.append((state, action, reward, next_state, done))
+    def remember(self, state, action, reward, next_state):
+        self.memory.append((state, action, reward, next_state))
 
-    def act(self, state, actions):
-        if random.uniform(0, 1) < self.epsilon:
-            return random.choice(list(actions.keys()))
+    def act(self, state, actions, is_backtesting=False):
+        if not is_backtesting and random.uniform(0, 1) < self.epsilon:
+            return random.choice(list(actions))
+        
         state = torch.FloatTensor(state).unsqueeze(0)
         with torch.no_grad():
             q_values = self.model(state)
@@ -36,9 +37,9 @@ class DQNAgent:
             return
         minibatch = random.sample(self.memory, batch_size)
 
-        for state, action, reward, next_state, done in minibatch:
+        for state, action, reward, next_state in minibatch:
             target = reward
-            if not done:
+            if next_state is not None:
                 next_state_tensor = torch.FloatTensor(next_state).unsqueeze(0)
                 target += self.gamma * torch.max(self.model(next_state_tensor)).item()
 

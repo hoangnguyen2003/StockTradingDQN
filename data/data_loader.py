@@ -2,12 +2,7 @@ import yfinance as yf
 import numpy as np
 
 def download_data(symbol, start_date, end_date):
-    data = yf.download(
-        symbol,
-        start=start_date,
-        end=end_date
-    )
-    return data
+    return yf.download(symbol, start_date, end_date)
 
 def preprocess_data(data):
     data['SMA_5'] = data['Close'].rolling(window=5).mean()
