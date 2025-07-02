@@ -9,7 +9,7 @@ actions:
   2: 'SELL'
 
 training:
-  episodes: 3
+  episodes: 1000
   batch_size: 32
   gamma: 0.95
   epsilon: 1.0
