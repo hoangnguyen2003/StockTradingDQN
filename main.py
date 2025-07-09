@@ -7,16 +7,6 @@ import os, argparse
 import random
 import numpy as np
 
-def set_seed(seed=42):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-
 def train_agent():
     raw_data = download_data(config['symbol'], config['start_date'], config['end_date'])
     data = preprocess_data(raw_data)
@@ -75,8 +65,6 @@ if __name__ == '__main__':
         help='Choose "train" to train the model or "backtest" to only evaluate',
         default='train'
     )
-
-    set_seed()
 
     if parser.parse_args().mode == 'train':
         processed_data, trained_agent  = train_agent()

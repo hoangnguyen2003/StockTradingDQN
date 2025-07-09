@@ -1,4 +1,4 @@
-symbol: 'DELL'
+symbol: 'GOOG'
 start_date: '2020-01-01'
 end_date: '2025-01-01'
 initial_balance: 10000
@@ -9,8 +9,8 @@ actions:
   2: 'SELL'
 
 training:
-  episodes: 1000
-  batch_size: 32
+  episodes: 2000
+  batch_size: 16
   gamma: 0.95
   epsilon: 1.0
   epsilon_min: 0.01

@@ -1,5 +1,11 @@
 # StockTradingDQN
 
+### Table of contents
+* [Introduction](#star2-introduction)
+* [Installation](#wrench-installation)
+* [How to run](#zap-how-to-run) 
+* [Contact](#raising_hand-questions)
+
 ## :star2: Introduction
 
 * <p align="justify">Developed a reinforcement learning system for automated stock trading using Deep Q-Networks.</p>
@@ -15,7 +21,7 @@
 ### 1) Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/hoangnguyen2003/StockTradingDQN.git    
+git clone https://github.com/hoangnguyen2003/StockTradingDQN.git
 ```
 
 A folder called `StockTradingDQN` should appear.
