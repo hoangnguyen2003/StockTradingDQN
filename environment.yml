@@ -21,7 +21,7 @@ dependencies:
   - zlib=1.2.13=h8cc25b3_1
   - pip:
       - beautifulsoup4==4.13.4
-      - certifi==2025.6.15
+      - certifi==2025.7.9
       - cffi==1.17.1
       - charset-normalizer==3.4.2
       - curl-cffi==0.11.4
@@ -35,8 +35,8 @@ dependencies:
       - multitasking==0.0.11
       - networkx==3.5
       - numpy==2.3.1
-      - pandas==2.3.0
-      - peewee==3.18.1
+      - pandas==2.3.1
+      - peewee==3.18.2
       - platformdirs==4.3.8
       - protobuf==6.31.1
       - pycparser==2.22
@@ -48,9 +48,9 @@ dependencies:
       - soupsieve==2.7
       - sympy==1.14.0
       - torch==2.7.1
-      - typing-extensions==4.14.0
+      - typing-extensions==4.14.1
       - tzdata==2025.2
       - urllib3==2.5.0
       - websockets==15.0.1
-      - yfinance==0.2.64
+      - yfinance==0.2.65
 prefix: C:\Users\Win10\miniconda3\envs\StockTradingDQN
