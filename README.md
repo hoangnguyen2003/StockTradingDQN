@@ -30,7 +30,7 @@ A folder called `StockTradingDQN` should appear.
 
 Make sure that you have Anaconda installed. If not - follow this [miniconda installation](https://www.anaconda.com/docs/getting-started/miniconda/install).
 
-<p align="justify">You can re-create our conda enviroment from `environment.yml` file:</p>
+You can re-create our conda enviroment from `environment.yml` file:
 
 ```bash
 cd StockTradingDQN
@@ -54,7 +54,7 @@ conda activate StockTradingDQN
 python main.py
 ```
 
-To backtest the trained model, you can change the `symbol` to test on different stocks and adjust the `start_date/end_date` for different time periods in `config/config.yaml`.
+To backtest the trained model, you can change the `symbol` to test on different stocks and adjust the `start_date/end_date` for different time periods in `config/config.yaml`. Run:
 
 ```bash
 python main.py --mode backtest
